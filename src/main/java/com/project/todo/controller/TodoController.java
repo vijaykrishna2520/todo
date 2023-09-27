@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TodoController {
-    @RequestMapping(method = RequestMethod.GET)
-    public String sayHello(){
-        return "It's working bro enjoy yes it is";
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String sayHello() {
+        return "It's working bro enjoy ok fine thanks";
     }
 }
