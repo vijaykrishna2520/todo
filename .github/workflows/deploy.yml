@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 8
+          distribution: 'adopt'
+
 
       - name: Build Spring Boot Application
         run: mvn clean package  # Adjust for your build tool (e.g., gradle build)
