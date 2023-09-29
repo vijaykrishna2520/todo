@@ -36,11 +36,11 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: "target/todo-1.0.0-SNAPSHOT.jar"  # Adjust the source path if needed
-          target: "/home/todo-1.0.0-SNAPSHOT.jar"  # Adjust the target path
+          target: "home"  # Adjust the target path
 
       - name: SSH into the Ubuntu instance and start the application (alternative approach)
         run: |
-          sshpass -p "${{ secrets.PASSWORD }}" ssh -o StrictHostKeyChecking=no "${{ secrets.USERNAME }}"@${{ secrets.HOST }} "java -jar /path/to/your/application.jar"
+          sshpass -p "${{ secrets.PASSWORD }}" ssh -o StrictHostKeyChecking=no "${{ secrets.USERNAME }}"@${{ secrets.HOST }} "java -jar /home/target/todo-1.0.0-SNAPSHOT.jar"
         env:
           PASSWORD: ${{ secrets.PASSWORD }}
 
