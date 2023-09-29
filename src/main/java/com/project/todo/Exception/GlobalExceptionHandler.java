@@ -1,4 +1,4 @@
-package com.project.todo.controller.Exception;
+package com.project.todo.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException e){
-        return new ResponseEntity<>("Resource not found brother",HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<String> handleBadException(BadRequestException e){
+        return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
     }
 
 }

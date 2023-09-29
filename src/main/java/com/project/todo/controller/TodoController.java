@@ -2,11 +2,11 @@ package com.project.todo.controller;
 
 import com.project.todo.entity.TodoEntity;
 import com.project.todo.service.TodoService;
+import com.sun.tools.javac.comp.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TodoController {
@@ -17,8 +17,19 @@ public class TodoController {
         return "It's working bro enjoy ok fine thanks";
     }
 //    add a todo
-    @RequestMapping(value="/todo",method = RequestMethod.POST)
-    public void addTodo(@RequestBody TodoEntity todoEntity){
-        todoService.addTodo(todoEntity);
+    @RequestMapping(value="/todos",method = RequestMethod.POST)
+    public ResponseEntity<String> addTodo(@RequestBody TodoEntity todoEntity){
+        TodoEntity todo = todoService.addTodo(todoEntity);
+        return new ResponseEntity<>("Todo added successfully", HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/todos/{id}",method = RequestMethod.GET)
+    public TodoEntity getTodoById(@PathVariable(value = "id") Long id){
+        return todoService.getTodoById(id);
+    }
+
+    @RequestMapping(value = "todos/{id}",method = RequestMethod.PUT)
+    public void updateTodoById(@PathVariable(value = "id") Long id,@RequestBody TodoEntity todoEntity){
+        todoService.updateTodoById(id,todoEntity);
     }
 }
