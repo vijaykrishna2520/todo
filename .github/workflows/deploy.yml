@@ -33,4 +33,4 @@ jobs:
           target: "home/todo-1.0.0-SNAPSHOT.jar"  # Adjust the target path
 
       - name: SSH into the Ubuntu instance and start the application
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "java -jar /path/to/destination/your-application.jar"  # Adjust the path
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "java -jar /home/todo-1.0.0-SNAPSHOT.jar"  # Adjust the path
