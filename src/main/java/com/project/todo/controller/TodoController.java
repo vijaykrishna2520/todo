@@ -32,4 +32,9 @@ public class TodoController {
     public void updateTodoById(@PathVariable(value = "id") Long id,@RequestBody TodoEntity todoEntity){
         todoService.updateTodoById(id,todoEntity);
     }
+
+    @RequestMapping(value = "todos/test",method = RequestMethod.GET)
+    public String sampleTest(){
+        return "It's working bro you don't worry";
+    }
 }
