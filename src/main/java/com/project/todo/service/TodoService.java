@@ -1,7 +1,7 @@
 package com.project.todo.service;
 
-import com.project.todo.Exception.BadRequestException;
-import com.project.todo.Exception.ResourceNotFoundException;
+import com.project.todo.exception.BadRequestException;
+import com.project.todo.exception.ResourceNotFoundException;
 import com.project.todo.entity.TodoEntity;
 import com.project.todo.repository.TodoRepository;
 import org.slf4j.Logger;
